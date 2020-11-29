@@ -1,95 +1,38 @@
-<h1>Movie Watcher</h1>
+<h1>Cats!</h1>
+
+<h2>Cats that are not sleepy!</h2>
 
 <ul>
-  {{#each movies}}
-  <li>
-    <p>
-      {{this.id}}. {{this.movie}}
-
-      <button data-planid="{{this.id}}" class="delplan">Watch Movie</button>
-    </p>
-  </li>
+  {{#each cats}}
+    {{#unless sleepy}}
+      {{> cats/cat-block sleep=true}}
+    {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Add A Movie</h2>
-<form id="createplan" class="button-size">
-  <textarea type="text" name="movie"></textarea>
-  <button type="submit">Add Movie</button>
+<h2>Cats that are sleepy!</h2>
+
+<ul>
+  {{#each cats}}
+    {{#if sleepy}}
+      {{> cats/cat-block sleep=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Cat</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Cat Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="slee">Sleepy?</label><br>
+    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
+    <input type="radio" name="sleepy" value="0"> Awake
+  </div>
+
+  <button type="submit">Add Cat</button>
 </form>
-
-<h2>Update Movie</h2>
-<form id="updateplan" class="button-size">
-  <select name="id">
-		{{#each movies}}
-			<option value="{{this.id}}">{{this.movie}}</option>
-		{{/each}}
-	</select>
-  <textarea type="text" name="movie" placeholder="Movie"></textarea>
-  <button type="submit">Update Movie</button>
-</form>
-
-<script type="text/javascript">
-  $(".delplan").on("click", function(event) {
-    // Get the ID from the button.
-    // This is shorthand for $(this).attr("data-planid")
-    var id = $(this).data("planid");
-
-    // Send the DELETE request.
-    $.ajax("/api/movies/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  $("#createplan").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // [name=plan] will find an element with a "name" attribute equal to the string "plan"
-    var newPlan = {
-      movie: $("#createplan [name=movie]").val().trim()
-    };
-
-    // Send the POST request.
-    $.ajax("/api/movies", {
-      type: "POST",
-      data: newPlan
-    }).then(
-      function() {
-        console.log("created new movie");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  $("#updateplan").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $("[name=id]").val().trim();
-
-    var updatedPlan = {
-      movie: $("#updateplan [name=movie]").val().trim()
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/movies/" + id, {
-      type: "PUT",
-      data: updatedPlan
-    }).then(
-      function() {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-</script>
