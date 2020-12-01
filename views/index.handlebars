@@ -1,24 +1,26 @@
-<h1>Futur Burgers</h1>
+<h1 style="text-align: center;">Futur Burgers</h1>
+
+<img src="https://aht.seriouseats.com/images/2011/08/20110824-pusheen-burger.gif" style="width:200px;height:200px;" class="center" alt="cat logo">
 
 <h2>Your Burgers</h2>
 
-<ul>
+<ol>
   {{#each cats}}
     {{#unless sleepy}}
       {{> cats/cat-block sleep=true}}
     {{/unless}}
   {{/each}}
-</ul>
+</ol>
 
 <h2>Burgers Eaten</h2>
 
-<ul>
+<ol>
   {{#each cats}}
     {{#if sleepy}}
       {{> cats/cat-block sleep=false}}
     {{/if}}
   {{/each}}
-</ul>
+</ol>
 
 <h2>Order A Burger</h2>
 <form class="create-form">
@@ -27,11 +29,20 @@
     <label for="ca">Burger Name:</label>
     <input type="text" id="ca" name="name">
   </div>
+<br>
 
   <div class="form-group">
     <label for="sleepy">Order</label><br>
     <input type="radio" name="sleepy" value="0">Qty: 1
   </div>
+  <br>
 
-  <button type="submit">Buy Burger</button>
+  <button type="submit" class="buy-button">Buy Burger</button>
 </form>
+
+<br>
+<br>
+<br>
+<br>
+
+<p style="text-align: center;">&copy; Futur Burgers</p>
