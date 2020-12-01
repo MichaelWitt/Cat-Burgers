@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 
+body {
+	background-image: url('./burger-background.jpg');
+	background-color: #ffffff;
+	width: 100%;
+	height: auto;
+}
+
 h1 {
 	font-family: 'Nerko One', cursive;
 	font-size: 55px;
