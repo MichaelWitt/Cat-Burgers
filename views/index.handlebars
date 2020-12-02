@@ -5,9 +5,9 @@
 <h2>Your Burgers</h2>
 
 <ol>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
+  {{#each burgers}}
+    {{#unless hungry}}
+      {{> burgers/burger-block hunger=true}}
     {{/unless}}
   {{/each}}
 </ol>
@@ -15,9 +15,9 @@
 <h2>Burgers Eaten</h2>
 
 <ol>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
+  {{#each burgers}}
+    {{#if hungry}}
+      {{> burgers/burger-block hunger=false}}
     {{/if}}
   {{/each}}
 </ol>
@@ -32,8 +32,8 @@
 <br>
 
   <div class="form-group">
-    <label for="sleepy">Order</label><br>
-    <input type="radio" name="sleepy" value="0">Qty: 1
+    <label for="hungry">Order</label><br>
+    <input type="radio" name="hungry" value="0">Qty: 1
   </div>
   <br>
 
@@ -45,4 +45,4 @@
 <br>
 <br>
 
-<p style="text-align: center;">&copy; Futur Burgers</p>
+<p style="text-align: center;">&copy; Cat Burgers</p>

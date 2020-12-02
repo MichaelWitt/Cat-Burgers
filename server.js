@@ -18,7 +18,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Import routes and give the server access to them.
-var routes = require('./controllers/futurController.js');
+var routes = require('./controllers/catburgersController.js');
 
 app.use(routes);
 
