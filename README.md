@@ -1,6 +1,6 @@
 # Cat-Burgers
 
-Welcome to Cat Burgers! Come enjoy the best burger in town. Cats welcome :)
+Welcome to Cat Burgers! Come enjoy the best burger in town. Cats are welcome :)
 
 ## Project Details
 
